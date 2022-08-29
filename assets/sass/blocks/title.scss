@@ -1,0 +1,13 @@
+@use '../global/variables' as *;
+
+.title {
+  &--l {
+    font-size: $text-l;
+    font-weight: 700;
+  }
+
+  &--xl {
+    font-size: $text-xl;
+    font-weight: 900;
+  }
+}

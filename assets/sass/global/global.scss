@@ -1,0 +1,51 @@
+@use './variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--app-font-family);
+  font-size: var(--app-font-size);
+  scrollbar-color: var(--background-secondary) var(--text-primary);
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--background-secondary);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--text-primary);
+    border-radius: 4px;
+  }
+}
+
+body {
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p , h1, h2, h3 {
+  margin: 0
+}

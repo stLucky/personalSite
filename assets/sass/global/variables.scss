@@ -1,0 +1,103 @@
+// Colors
+$black: #000000;
+$black-01: rgba(0, 0, 0, 0.1);
+$black-02: rgba(0, 0, 0, 0.3);
+$black-03: rgba(0, 0, 0, 0.3);
+$black-04: rgba(0, 0, 0, 0.3);
+$black-007: rgba(0, 0, 0, 0.07);
+$black-004: rgba(0, 0, 0, 0.04);
+$white: #FFFFFF;
+$white-01: rgba(255, 255, 255, 0.1);
+$white-02: rgba(255, 255, 255, 0.3);
+$white-03: rgba(255, 255, 255, 0.3);
+$white-04: rgba(255, 255, 255, 0.3);
+$white-007: rgba(255, 255, 255, 0.07);
+$white-004: rgba(255, 255, 255, 0.04);
+$gray-600: #484848;
+$gray-300: #A4A4A4;
+$blue: #5886EF;
+$blue-black: #0245DF;
+$yellow: #FDB827;
+$yellow-black: #C38400;
+$yellow-500: darken($yellow, 20%);
+$yellow-600: darken($yellow, 40%);
+$yellow-300: lighten($yellow, 20%);
+$yellow-200: lighten($yellow, 30%);
+$yellow-black-500: darken($yellow-black, 20%);
+$yellow-black-600: darken($yellow-black, 40%);
+$yellow-black-300: lighten($yellow-black, 20%);
+$yellow-black-200: lighten($yellow-black, 40%);
+
+// fonts
+$basic-font: "Inter", "Arial", sans-serif;
+$root-font-size: 16px;
+
+// $text-xs: clamp(0.75rem, 2vw, 1rem);
+$text-s: clamp(1.625rem, 1vw + 1.25rem, 2.25rem);
+$text-m: clamp(1.625rem, 1vw + 1.25rem, 2.25rem);
+$text-l: clamp(1.875rem, 2vw + 1.25rem, 2.75rem);
+$text-xl: clamp(2.5rem, 4vw + 1.25rem, 4rem);
+
+// z-index
+$z-low: 1;
+$z-middle: 10;
+$z-high: 20;
+$z-extra-high: 30;
+
+// widths
+$tablet-width: 768px;
+$laptop-width: 1024px;
+$desktop-width: 1280px;
+$tablet: "(min-width: #{$tablet-width})";
+$laptop: "(min-width: #{$laptop-width})";
+$desktop: "(min-width: #{$desktop-width})";
+
+$resized-switch-width: 900px;
+$resized-switch: "(min-width: #{$resized-switch-width})";
+
+$max-width-inner: 600px;
+$max-width-outer: 1440px;
+
+// transition
+$duration: 200ms;
+
+// indents
+$indent-s: 10px;
+$indent: 20px;
+$indent-l: 40px;
+
+// others
+$header-height: 52px;
+
+// @use '~/assets/styles/mixins/mixins' as *;
+
+// $primary-light: #b8c1ec;
+// $primary-dark: #232946;
+// $primary-dark-08: rgb(35, 41, 70, 0.8);
+// $secondary-light: #fffffe;
+// $secondary-dark: #dfdfdf;
+// $tertiary: #eebbc3;
+// $tertiary-dark: #bf959b;
+// $tertiary-light: #ffdde2;
+// $stroke: #121629;
+
+// $border-radius: rem(10px);
+// $border: rem(1px) solid var(--stroke);
+// $box-shadow: rem(10px) rem(10px) 0 0 var(--shadow);
+// $max-width: rem(1024px);
+
+// $nav-height: 50px;
+// $header-height: 90px;
+
+
+
+// $text-xs: 0.75rem;
+// $text-sm: 0.875rem;
+// $text-base: 1rem;
+// $text-lg: 1.125rem;
+// $text-xl: 1.25rem;
+// $text-2xl: clamp(1.25rem, 5vw, 1.5rem);
+// $text-3xl: clamp(1.5rem, 5vw, 1.875rem);
+// $text-4xl: clamp(1.75rem, 5vw, 2.5rem);
+// $text-5xl: clamp(2rem, 8vw, 3.5rem);
+// $text-6xl: clamp(2rem, 10vw, 4.5rem);

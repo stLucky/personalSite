@@ -1,0 +1,46 @@
+@use '../mixins' as *;
+@use '../global/variables' as *;
+
+.btn {
+  appearance: none;
+  @include inline-flex(center, center, column);
+  padding: rem(15px);
+  border: none;
+  border-radius: rem(8px);
+  background-color: transparent;
+  font-size: rem(14px);
+  font-weight: 600;
+  @include transition;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(rem(-5px));
+  }
+
+  &--primary {
+    background-color: var(--text-secondary);
+    color: var(--background-primary);
+
+    &:hover {
+      box-shadow: 0 6px 0 -4px var(--text-secondary),
+        0 9px 0 -4px var(--text-secondary-500),
+        0 12px 0 -4px var(--text-secondary-600);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--background-tertiary);
+    color: var(--text-primary);
+
+    &:hover {
+      box-shadow: 0 6px 0 -4px var(--background-tertiary),
+        0 9px 0 -4px var(--background-tertiary-007),
+        0 12px 0 -4px var(--background-tertiary-004);
+    }
+  }
+
+  @media #{$tablet} {
+    padding: rem(15px) rem(20px);
+    font-size: rem(16px);
+  }
+}

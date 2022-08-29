@@ -1,0 +1,193 @@
+<template>
+  <header :class="$style.header">
+    <div class="container" :class="$style.inner">
+      <div
+        v-if="!isLargeTablet"
+        :class="$style.titleWrap"
+      >
+        <UiBtnBurger
+          :active="isVisibleSidebar"
+          :class="$style.burgerBtn"
+          @click="handleBtnClcik"
+        />
+        <h1 :class="$style.title">
+          {{ $t(`${routeName?.toString()}.title`) }}
+        </h1>
+      </div>
+      <h1
+        v-else
+        class="visually-hidden"
+      >
+        {{ $t(`${routeName?.toString()}.title`) }}
+      </h1>
+      <template v-if="isLargeTablet">
+        <nav :class="$style.nav">
+          <ul :class="$style.menuDesktop">
+            <li
+              v-for="name in Routes.Names"
+              :key="name"
+              :class="$style.item"
+            >
+              <NuxtLink
+                :to="Routes.Paths[name]"
+                :class="$style.link"
+                :active-class="$style.linkActive"
+              >
+                {{ $t(`${name}.title`) }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </nav>
+        <BaseSwitches />
+      </template>
+      <UiSidebar
+        v-else
+        :active="isVisibleSidebar"
+      >
+        <nav>
+          <ul :class="$style.menuMobile">
+            <li
+              v-for="name in Routes.Names"
+              :key="name"
+              :class="$style.item"
+            >
+              <NuxtLink
+                :to="Routes.Paths[name]"
+                :class="$style.link"
+                :active-class="$style.linkActive"
+              >
+                {{ $t(`${name}.title`) }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </nav>
+        <BaseSwitches />
+      </UiSidebar>
+    </div>
+  </header>
+</template>
+<script setup lang="ts">
+import { Routes } from "@/helpers";
+import { Breakpoints } from "@/const";
+
+// sidebar
+const isVisibleSidebar = ref(false);
+const handleBtnClcik = () => {
+  isVisibleSidebar.value = !isVisibleSidebar.value;
+};
+const closeSidebar = () => {
+  isVisibleSidebar.value = false;
+};
+
+// media-query
+const isLargeTablet = useMediaQuery(`(min-width: ${Breakpoints.TABLET}px)`);
+
+// routes
+const route = useRoute();
+const routeName = computed(() => route.name);
+watch(routeName, () => {
+  if (isVisibleSidebar.value) {
+    closeSidebar();
+  }
+});
+</script>
+<style lang="scss" module>
+@use '~/assets/sass/mixins' as *;
+@use '~/assets/sass/global/variables' as *;
+
+$offset-link-decor: rem(8px);
+
+.header {
+  padding: 20px 0;
+  background-image: linear-gradient(158deg,
+      var(--background-secondary) -100%,
+      var(--background-primary-004) 100%);
+  min-height: $header-height;
+}
+
+.inner {
+  @include flex(space-between);
+}
+
+.nav {
+  flex-grow: 1;
+}
+
+.titleWrap {
+  @include flex(flex-start);
+  flex-grow: 1;
+}
+
+.title {
+  font-size: rem(14px);
+  margin: 0 auto;
+}
+
+.menuDesktop {
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+  @include flex(space-between);
+  max-width: rem(500px);
+  margin: 0 auto;
+
+  @media #{$resized-switch} {
+    max-width: rem($max-width-inner);
+  }
+}
+
+.menuMobile {
+  font-size: rem(24px);
+  margin: 0 0 rem(50px);
+
+  .item {
+    text-align: center;
+    margin-bottom: rem(30px);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.burgerBtn {
+  position: relative;
+  z-index: $z-extra-high;
+}
+
+.item {
+  padding-left: $offset-link-decor;
+}
+
+.link {
+  position: relative;
+  color: var(--text-primary);
+  font-weight: 600;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -#{$offset-link-decor};
+    transform: translate(-50%, -50%) scale(0);
+    @include size(rem(5px), rem(5px));
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    margin-right: rem(4px);
+    @include transition;
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &Active {
+    &::before {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+</style>

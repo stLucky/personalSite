@@ -1,0 +1,16 @@
+@use '../mixins' as *;
+@use '../global/variables' as *;
+
+.container {
+  padding: 0 rem(20px);
+
+  @media #{$tablet} {
+    padding: 0 rem(40px);
+  }
+
+  @media #{$desktop} {
+    max-width: rem($max-width-outer);
+    margin: 0 auto;
+    padding: 0 rem(60px);
+  }
+}

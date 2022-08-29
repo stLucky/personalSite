@@ -1,0 +1,71 @@
+{
+  "index": {
+    "title": "Home",
+    "subtitle": "Hey there 👋{0} I am{1} Sergey",
+    "desc": "I am a front-end developer with a passion for building user friendly and performant websites and web applications"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "My name is Levin Sergey and I am a {profession} from Russia working remotely at {job}",
+    "intro": {
+      "title": "First Steps",
+      "first_item": "I first discovered web development with the HTML Academy trainers in 2020. There I smoothly dived into the syntax of HTML and CSS.",
+      "second_item": "I discovered that web development is a creative field, mixed with problem solving and constantly evolving, so I decided not to stop, but to continue my education and took their intensives in HTML, CSS and JS.",
+      "third_item": "There I learned not only about the basic concepts and rules of languages, but also about the best practices, approaches in web development. Since then, I've continued to learn more about JS, taking a React intensive, and also learning Vue. Currently, I am also actively studying new technologies and constantly applying knowledge in practice."
+    },
+    "experience": {
+      "title": "My Experience",
+      "first_item": "My first job was at {0}, where I worked as a website layout designer in 2021. The daily technology stack consisted of HTML, CSS, JS, jQuery",
+      "second_item": "I am currently working as a frontend developer at {0}. Here I am finalizing and implementing new functionality of the product on Vue js."
+    },
+    "tech_stack": {
+      "title": "Tech Stack",
+      "desc": "I have experience working with the following technologies:",
+      "stylization": {
+        "title": "Stylization:",
+        "technologies": "Css, Sass, Less, Stylus, BEM methodology. Css frameworks: Bootstrap, Tailwind, Bulma, Materialize."
+      },
+      "js": {
+        "title": "Javascript:",
+        "technologies": "Worked with libraries such as JQuery, React, React Router, Redux, Mapbox, makePdf, D3js, GSAP. Frameworks: Vue js and its ecosystem. Component library: Element Ui, BootstrapVue, Vuetify, Buefy. Extensions: Typescript."
+      },
+      "git": {
+        "title": "System version control:",
+        "technologies": "GIT."
+      },
+      "build_systems": {
+        "title": "Build systems:",
+        "technologies": "GULP, Webpack, Vite."
+      },
+      "testing": {
+        "title": "Testing:",
+        "technologies": "As a framework, I use Jest for unit testing and libraries - Vue Test Utils, React Testing Library."
+      }
+    }
+  },
+  "portfolios": {
+    "title": "Portfolios",
+    "subtitle": "What i’ve done😋",
+    "cat_energy": "Online store of functional food for cats",
+    "pognali": "Travel companion search service \"Let's go\"",
+    "kekso_booking": "Service for placing ads for renting real estate in the center of Tokyo.",
+    "movie_vue": "Adaptive version of the movie site on Vue Js",
+    "clone_medium": "Posting service",
+    "assamblage_point": "This is a realtime chat on Vue 3. The firebase API is used as a backend.",
+    "what_to_watch": "Online cinema. Watch new items absolutely free and in the best quality.",
+    "personal_website": "Multilingual responsive website built with Nuxt and GSAP for animation"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "subtitle": "You can reach me any time🙂"
+  },
+  "about_me": "About me",
+  "see_portfolios": "😮 To portfolio",
+  "code_available": "Source code available",
+  "copyright": "Copyright © 2021{0} All rights reserved.",
+  "frontend_developer": "front-end developer",
+  "read_more": "Read more",
+  "in_cv": "in my CV",
+  "source_code": "Source code",
+  "live": "Live"
+}

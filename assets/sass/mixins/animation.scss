@@ -1,0 +1,5 @@
+@use '../global/variables';
+
+@mixin transition($duration: variables.$duration) {
+  transition: all $duration;
+}

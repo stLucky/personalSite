@@ -1,0 +1,74 @@
+@use './variables' as *;
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-primary: #{$white};
+        --background-primary-004: #{$white-004};
+        --background-secondary: #{$gray-300};
+        --background-tertiary: #{$black-01};
+        --background-tertiary-02: #{$black-02};
+        --background-tertiary-03: #{$black-03};
+        --background-tertiary-04: #{$black-04};
+        --background-tertiary-007: #{$black-007};
+        --background-tertiary-004: #{$black-004};
+        --text-primary: #{$black};
+        --text-secondary: #{$yellow-black};
+        --text-secondary-500: #{$yellow-black-300};
+        --text-secondary-600: #{$yellow-black-200};
+        --link-primary: #{$blue-black};
+        
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-primary: #{$black};
+        --background-primary-004: #{$black-004};
+        --background-secondary: #{$gray-600};
+        --background-tertiary: #{$white-01};
+        --background-tertiary-02: #{$white-02};
+        --background-tertiary-03: #{$white-03};
+        --background-tertiary-04: #{$white-04};
+        --background-tertiary-007: #{$white-007};
+        --background-tertiary-004: #{$white-004};
+        --text-primary: #{$white};
+        --text-secondary: #{$yellow};
+        --text-secondary-500: #{$yellow-500};
+        --text-secondary-600: #{$yellow-600};
+        --link-primary: #{$blue};
+    }
+}
+
+.light {
+    --background-primary: #{$white};
+    --background-primary-004: #{$white-004};
+    --background-secondary: #{$gray-300};
+    --background-tertiary: #{$black-01};
+    --background-tertiary-02: #{$black-02};
+    --background-tertiary-03: #{$black-03};
+    --background-tertiary-04: #{$black-04};
+    --background-tertiary-007: #{$black-007};
+    --background-tertiary-004: #{$black-004};
+    --text-primary: #{$black};
+    --text-secondary: #{$yellow-black};
+    --text-secondary-500: #{$yellow-black-300};
+    --text-secondary-600: #{$yellow-black-200};
+    --link-primary: #{$blue-black};
+}
+
+.dark {
+    --background-primary: #{$black};
+    --background-primary-004: #{$black-004};
+    --background-secondary: #{$gray-600};
+    --background-tertiary: #{$white-01};
+    --background-tertiary-02: #{$white-02};
+    --background-tertiary-03: #{$white-03};
+    --background-tertiary-04: #{$white-04};
+    --background-tertiary-007: #{$white-007};
+    --background-tertiary-004: #{$white-004};
+    --text-primary: #{$white};
+    --text-secondary: #{$yellow};
+    --text-secondary-500: #{$yellow-500};
+    --text-secondary-600: #{$yellow-600};
+    --link-primary: #{$blue};
+}

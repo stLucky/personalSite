@@ -1,0 +1,25 @@
+@use '../mixins' as *;
+
+.link {
+  position: relative;
+  @include transition;
+  font-weight: 500;
+  color: var(--link-primary);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-secondary);
+    @include transition;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}

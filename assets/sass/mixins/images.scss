@@ -1,0 +1,5 @@
+@mixin bg-image($path, $size: cover) {
+  background-image: url($path);
+  background-repeat: no-repeat;
+  background-size: $size;
+}
