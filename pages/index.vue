@@ -51,6 +51,8 @@ const handleMouseMove = (evt: MouseEvent) => {
 const animatePage = () => {
   const getTextCl = () => [`.${$style.title}`, `.${$style.desc}`, `.${$style.btns}`];
 
+  gsap.makeVisible(`.${$style.inner}`);
+
   gsap.prepareDecor(tl, `.${$style.decor}`);
   gsap.prepareText(tl, getTextCl());
 
@@ -72,6 +74,7 @@ onMounted(() => {
   height: 100%;
   padding-top: rem(48px);
   margin: 0 auto;
+  visibility: hidden;
 }
 
 .titleWrap {

@@ -71,7 +71,7 @@ export default class Gsap {
   public timeline (
     defaults: gsap.TweenVars = { ease: "ease.in", duration: 0.5 }
   ) {
-    return gsap.timeline({
+    return this.engine.timeline({
       defaults
     });
   }
@@ -86,6 +86,12 @@ export default class Gsap {
       x,
       y,
       stagger
+    });
+  }
+
+  public makeVisible (targets: gsap.TweenTarget) {
+    this.engine.set(targets, {
+      autoAlpha: 1
     });
   }
 

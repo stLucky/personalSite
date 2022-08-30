@@ -1,22 +1,35 @@
 <template>
-  <div :class="$style.inner" @mousemove="handleMouseMove">
+  <div
+    :class="$style.inner"
+    @mousemove="handleMouseMove"
+  >
     <div :class="$style.personWrap">
       <div :class="$style.person" />
       <div :class="$style.smile" />
     </div>
 
     <div :class="$style.textContent">
-      <p :class="$style.title" class="title title--l">
+      <p
+        :class="$style.title"
+        class="title title--l"
+      >
         {{ $t('contacts.subtitle') }}
       </p>
-      <ul class="desc" :class="$style.list">
+      <ul
+        class="desc"
+        :class="$style.list"
+      >
         <li
           v-for="(link, name) in Contacts.Links"
           :key="name"
           :class="$style.contactItem"
         >
           <span :class="$style.contactName"> {{ name }}: </span>
-          <a :href="link" class="link" target="_blank">
+          <a
+            :href="link"
+            class="link"
+            target="_blank"
+          >
             {{ linkName(name) }}
           </a>
         </li>
@@ -49,6 +62,8 @@ const handleMouseMove = (evt: MouseEvent) => {
 const animatePage = () => {
   const getTextCl = () => [`.${$style.title}`, `.${$style.contactItem}`, `.${$style.btns}`];
 
+  gsap.makeVisible(`.${$style.inner}`);
+
   gsap.prepareDecor(tl, `.${$style.smile}`);
   gsap.prepareText(tl, getTextCl());
 
@@ -71,6 +86,8 @@ onMounted(() => {
 @use '~/assets/sass/global/variables' as *;
 
 .inner {
+  visibility: hidden;
+
   @media #{$tablet} {
     @include flex(flex-start);
   }
@@ -152,7 +169,7 @@ onMounted(() => {
   }
 }
 
-.btns{
+.btns {
   position: relative;
 }
 </style>

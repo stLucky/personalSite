@@ -1,5 +1,8 @@
 <template>
-  <div @mousemove="handleMouseMove">
+  <div
+    :class="$style.inner"
+    @mousemove="handleMouseMove"
+  >
     <div :class="$style.titleWrap">
       <div :class="$style.person" />
       <i18n-t
@@ -22,13 +25,22 @@
       <h2 class="visually-hidden">
         {{ $t('about.intro.title') }}
       </h2>
-      <p class="desc" :class="$style.desc">
+      <p
+        class="desc"
+        :class="$style.desc"
+      >
         {{ $t('about.intro.first_item') }}
       </p>
-      <p class="desc" :class="$style.desc">
+      <p
+        class="desc"
+        :class="$style.desc"
+      >
         {{ $t('about.intro.second_item') }}
       </p>
-      <p class="desc" :class="$style.desc">
+      <p
+        class="desc"
+        :class="$style.desc"
+      >
         {{ $t('about.intro.third_item') }}
       </p>
     </section>
@@ -42,7 +54,11 @@
         class="desc"
         :class="$style.desc"
       >
-        <a :href="teamLeadLink" target="_blank" class="link">
+        <a
+          :href="teamLeadLink"
+          target="_blank"
+          class="link"
+        >
           TeamLead
         </a>
       </i18n-t>
@@ -52,7 +68,11 @@
         class="desc"
         :class="$style.desc"
       >
-        <a :href="exactFarmingLink" target="_blank" class="link">
+        <a
+          :href="exactFarmingLink"
+          target="_blank"
+          class="link"
+        >
           ExactFarming
         </a>
       </i18n-t>
@@ -65,11 +85,18 @@
       <h2 :class="$style.subtitle">
         {{ $t('about.tech_stack.title') }}
       </h2>
-      <p class="desc" :class="$style.desc">
+      <p
+        class="desc"
+        :class="$style.desc"
+      >
         {{ $t('about.tech_stack.desc') }}
       </p>
       <ul>
-        <li v-for="scope of scopes" :key="scope" :class="$style.scopeItem">
+        <li
+          v-for="scope of scopes"
+          :key="scope"
+          :class="$style.scopeItem"
+        >
           <span :class="$style.scopeTitle">
             {{ $t(`about.tech_stack.${scope}.title`) }}
           </span>
@@ -106,6 +133,8 @@ const handleMouseMove = (evt: MouseEvent) => {
 const animatePage = () => {
   const getTextCl = () => [`.${$style.title}`, `.${$style.section}`];
 
+  gsap.makeVisible(`.${$style.inner}`);
+
   gsap.prepareText(tl, getTextCl());
   gsap.animatePerson(tl, `.${$style.person}`);
   gsap.animateText(tl, getTextCl(), ">-2");
@@ -118,6 +147,10 @@ onMounted(() => {
 <style lang="scss" module>
 @use '~/assets/sass/mixins' as *;
 @use '~/assets/sass/global/variables' as *;
+
+.inner {
+  visibility: hidden;
+}
 
 .titleWrap {
   margin-bottom: rem($indent);

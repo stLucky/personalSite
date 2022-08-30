@@ -28,41 +28,55 @@
       >
         <br>
       </i18n-t>
-      <div v-if="isVisibleHand" :class="$style.hand" />
+      <div v-if="isHomeRoute" :class="$style.hand" />
     </div>
   </footer>
 </template>
 <script setup lang="ts">
 import { Routes, Contacts } from "@/helpers";
+import { Breakpoints } from "@/const";
 
 import { gsap } from "@/services/animation";
 
 const $style = useCssModule();
 
 const route = useRoute();
-const isVisibleHand = computed(() => route.name === Routes.Names.HOME);
+const isLargeTablet = useMediaQuery(`(min-width: ${Breakpoints.TABLET}px)`);
+const isHomeRoute = computed(() => route.name === Routes.Names.HOME);
 
 const tl = gsap.engine.exportRoot();
 
 const handleMouseMove = (evt: MouseEvent) => {
-  if (tl.isActive() || !isVisibleHand.value) { return; }
+  if (tl.isActive() || !isHomeRoute.value) {
+    return;
+  }
 
   gsap.mouseMove(`.${$style.hand}`, evt);
 };
 
 const animatePage = () => {
+  if (!isLargeTablet.value) { return; }
+
+  gsap.makeVisible(`.${$style.hand}`);
+
   gsap.engine.set(`.${$style.hand}`, {
     y: "100%"
   });
 
-  tl.to(`.${$style.hand}`, {
-    y: 0,
-    duration: 1
-  }, ">-2");
+  tl.to(
+    `.${$style.hand}`,
+    {
+      y: 0,
+      duration: 1
+    },
+    ">-2"
+  );
 };
 
-watch(isVisibleHand, () => {
-  if (!isVisibleHand.value) { return; }
+watch(isHomeRoute, () => {
+  if (!isHomeRoute.value) {
+    return;
+  }
 
   nextTick(() => {
     animatePage();
@@ -70,11 +84,10 @@ watch(isVisibleHand, () => {
 });
 
 onMounted(() => {
-  if (isVisibleHand.value) {
+  if (isHomeRoute.value) {
     animatePage();
   }
 });
-
 </script>
 <style lang="scss" module>
 @use '~/assets/sass/mixins' as *;
@@ -171,6 +184,7 @@ onMounted(() => {
     @include bg-image('@/assets/img/hand.png');
     bottom: 0;
     left: calc(50% + rem(280px));
+    visibility: hidden;
 
     @media (min-resolution: 2dppx) {
       background-image: url('@/assets/img/hand@2x.png');

@@ -85,6 +85,7 @@ const animate = (targets: string | string[]) => {
 };
 
 const animatePage = () => {
+  gsap.makeVisible(`.${$style.inner}`);
   animate([`.${$style.title}`, `.${$style.tabs}`, `.${$style.card}`]);
 };
 
@@ -111,6 +112,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
+  visibility: hidden;
 }
 
 .title {
