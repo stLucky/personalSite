@@ -35,7 +35,7 @@ onUnmounted(() => {
 </script>
 <style lang="scss" module>
 @use '~/assets/sass/global/variables' as *;
-@use '~/assets/sass/mixins/display' as *;
+@use '~/assets/sass/mixins' as *;
 
 .sidebar {
   position: fixed;
@@ -48,6 +48,13 @@ onUnmounted(() => {
   transition: transform 0.5s ease-in-out;
   font-size: rem(14px);
   background-color: var(--background-primary);
+
+  @media #{$tablet} {
+    position: static;
+    transform: translateX(0);
+    flex-direction: row;
+    background-color: initial;
+  }
 }
 
 .active {

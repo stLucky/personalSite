@@ -1,10 +1,7 @@
 <template>
   <header :class="$style.header">
-    <div class="container" :class="$style.inner">
-      <div
-        v-if="!isLargeTablet"
-        :class="$style.titleWrap"
-      >
+    <div class="container">
+      <div :class="$style.titleWrap">
         <UiBtnBurger
           :active="isVisibleSidebar"
           :class="$style.burgerBtn"
@@ -14,38 +11,9 @@
           {{ $t(`${routeName?.toString()}.title`) }}
         </h1>
       </div>
-      <h1
-        v-else
-        class="visually-hidden"
-      >
-        {{ $t(`${routeName?.toString()}.title`) }}
-      </h1>
-      <template v-if="isLargeTablet">
+      <UiSidebar :active="isVisibleSidebar">
         <nav :class="$style.nav">
-          <ul :class="$style.menuDesktop">
-            <li
-              v-for="name in Routes.Names"
-              :key="name"
-              :class="$style.item"
-            >
-              <NuxtLink
-                :to="Routes.Paths[name]"
-                :class="$style.link"
-                :active-class="$style.linkActive"
-              >
-                {{ $t(`${name}.title`) }}
-              </NuxtLink>
-            </li>
-          </ul>
-        </nav>
-        <BaseSwitches />
-      </template>
-      <UiSidebar
-        v-else
-        :active="isVisibleSidebar"
-      >
-        <nav>
-          <ul :class="$style.menuMobile">
+          <ul :class="$style.menu">
             <li
               v-for="name in Routes.Names"
               :key="name"
@@ -68,7 +36,6 @@
 </template>
 <script setup lang="ts">
 import { Routes } from "@/helpers";
-import { Breakpoints } from "@/const";
 
 // sidebar
 const isVisibleSidebar = ref(false);
@@ -78,9 +45,6 @@ const handleBtnClcik = () => {
 const closeSidebar = () => {
   isVisibleSidebar.value = false;
 };
-
-// media-query
-const isLargeTablet = useMediaQuery(`(min-width: ${Breakpoints.TABLET}px)`);
 
 // routes
 const route = useRoute();
@@ -105,17 +69,13 @@ $offset-link-decor: rem(8px);
   min-height: $header-height;
 }
 
-.inner {
-  @include flex(space-between);
-}
-
-.nav {
-  flex-grow: 1;
-}
-
 .titleWrap {
   @include flex(flex-start);
   flex-grow: 1;
+
+  @media #{$tablet} {
+    display: none;
+  }
 }
 
 .title {
@@ -123,27 +83,24 @@ $offset-link-decor: rem(8px);
   margin: 0 auto;
 }
 
-.menuDesktop {
-  font-size: clamp(1rem, 1vw + 0.5rem, 1.125rem);
-  @include flex(space-between);
-  max-width: rem(500px);
-  margin: 0 auto;
-
-  @media #{$resized-switch} {
-    max-width: rem($max-width-inner);
+.nav {
+  @media #{$tablet} {
+    flex-grow: 1;
   }
 }
 
-.menuMobile {
+.menu {
   font-size: rem(24px);
   margin: 0 0 rem(50px);
 
-  .item {
-    text-align: center;
-    margin-bottom: rem(30px);
+  @media #{$tablet} {
+    font-size: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+    @include flex(space-between);
+    max-width: rem(500px);
+    margin: 0 auto;
 
-    &:last-child {
-      margin-bottom: 0;
+    @media #{$resized-switch} {
+      max-width: rem($max-width-inner);
     }
   }
 }
@@ -155,6 +112,17 @@ $offset-link-decor: rem(8px);
 
 .item {
   padding-left: $offset-link-decor;
+  text-align: center;
+  margin-bottom: rem(30px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media #{$tablet} {
+    text-align: initial;
+    margin: initial;
+  }
 }
 
 .link {
