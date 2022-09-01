@@ -1,4 +1,4 @@
 export default {
-  THEME: "user-theme",
+  THEME: "theme",
   LANGUAGE: "language"
-};
+} as const;

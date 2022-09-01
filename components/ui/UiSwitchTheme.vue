@@ -40,49 +40,24 @@
   </button>
 </template>
 <script setup lang="ts">
-import { Ls } from "@/const";
-type UserTheme = "light" | "dark"
+import { Keys, Themes } from "@/const";
+import type { ProviderTheme } from "@/types";
 
-const setTheme = (theme: UserTheme) => {
-  localStorage.setItem(Ls.THEME, theme);
-  userTheme.value = theme;
-  document.documentElement.className = theme;
-};
-
-const getTheme = (): UserTheme =>
-  process.client ? localStorage.getItem(Ls.THEME) as UserTheme : "dark";
+const { userTheme, updateTheme } = inject(Keys.THEME) as ProviderTheme;
 
 const toggleTheme = (): void => {
-  const activeTheme = localStorage.getItem(Ls.THEME);
-
-  if (activeTheme === "light") {
-    setTheme("dark");
+  if (userTheme.value === Themes.LIGHT) {
+    updateTheme(Themes.DARK);
   } else {
-    setTheme("light");
-  }
-};
-
-const getMediaPreference = (): UserTheme | undefined => {
-  const hasDarkPreference = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
-
-  if (hasDarkPreference) {
-    return "dark";
-  } else {
-    return "light";
+    updateTheme(Themes.LIGHT);
   }
 };
 
 const $style = useCssModule();
 const toggleCl = computed(() => ({
   [$style.toggle]: true,
-  [$style.toggleChecked]: userTheme.value === "light"
+  [$style.toggleChecked]: userTheme.value === Themes.LIGHT
 }));
-
-const userTheme = ref<UserTheme>(getTheme() || getMediaPreference());
-
-onMounted(() => setTheme(userTheme.value));
 </script>
 <style lang="scss" module>
 @use '~/assets/sass/mixins' as *;

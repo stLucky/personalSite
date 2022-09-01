@@ -1,49 +1,21 @@
 <template>
   <div>
     <button
-      v-for="language of languages"
-      :key="language"
+      v-for="item of Languages"
+      :key="item"
       type="button"
-      :class="[$style.btn, {[$style.active]: locale === language}]"
-      @click="handleChangeLanguage(language)"
+      :class="[$style.btn, {[$style.active]: item === language}]"
+      @click="updateLanguage(item)"
     >
-      {{ language }}
+      {{ item }}
     </button>
   </div>
 </template>
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-import { Ls } from "@/const";
+import { Keys, Languages } from "@/const";
+import type { ProviderLanguages } from "@/types";
 
-const languages = ["ru", "en"] as const;
-type Languages = typeof languages[number]
-
-const { locale } = useI18n();
-
-const setAppLanguage = (language: Languages) => {
-  locale.value = language;
-  document.documentElement.lang = language;
-};
-const setLsLanguage = (language: Languages) => {
-  localStorage.setItem(Ls.LANGUAGE, language);
-};
-
-const handleChangeLanguage = (language: Languages) => {
-  setAppLanguage(language);
-  setLsLanguage(language);
-};
-
-const setLanguage = () => {
-  const lsLanguage = localStorage.getItem(Ls.LANGUAGE) as Languages | undefined;
-
-  if (lsLanguage) {
-    setAppLanguage(lsLanguage);
-  } else {
-    setLsLanguage(locale.value as Languages);
-  }
-};
-
-onMounted(() => setLanguage());
+const { language, updateLanguage } = inject(Keys.LANGUAGE) as ProviderLanguages;
 </script>
 <style lang="scss" module>
 @use '~/assets/sass/mixins' as *;
