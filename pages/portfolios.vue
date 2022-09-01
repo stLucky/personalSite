@@ -24,11 +24,11 @@
           <picture>
             <source
               type="image/webp"
-              :srcset="`/assets/img/${project.src}.webp 1x, /assets/img/${project.src}@2x.webp 2x`"
+              :srcset="`${imgPath(project)}.webp 1x, ${imgPath(project)}@2x.webp 2x`"
             >
             <img
-              :src="`/assets/img/${project.src}.jpg`"
-              :srcset="`/assets/img/${project.src}@2x.jpg`"
+              :src="`${imgPath(project)}.jpg`"
+              :srcset="`${imgPath(project)}@2x.jpg`"
               :alt="project.name"
               :class="$style.img"
             >
@@ -65,7 +65,11 @@
 import { gsap } from "@/services/animation";
 import { Technologies } from "@/const";
 import type { TTechnologies } from "@/const";
-import { projects } from "@/helpers";
+import { projects, getImgPath } from "@/helpers";
+
+const imgPath = computed(
+  () => (project: typeof projects[number]) => `${getImgPath()}/${project.src}`
+);
 
 // логика табов
 const tabs = Object.values(Technologies);
